@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+
+    apache-websvn-trac:
+        image: apache-websvn-trac
+        build:
+            context: ./
+            args:
+              # which uid/gid has the hosts svn user?
+              SVN_UID: "1000"
+              SVN_GID: "1000"
+        container_name: apache-websvn-trac
+        restart: unless-stopped
+        ports:
+            - "8080:80"
+        volumes:
+            - "./config.php:/var/www/websvn/include/config.php"
+            - "./websvn.conf:/etc/apache2/conf.d/websvn.conf"
+            - "./trac.conf:/etc/apache2/conf.d/trac.conf"
+            - "./svn:/svn"
+            - "./trac:/trac"
+
