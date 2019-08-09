@@ -11,10 +11,18 @@ RUN apk --update add --no-cache \
     apache2 \
     apache2-utils \
     apache2-webdav \
+    apache2-mod-wsgi \
     mod_dav_svn \
     php7 \
     php7-apache2 \
-    php7-xml
+    php7-xml \
+    trac \
+    py-subversion \
+    py-babel \
+    py-tz \
+    python2
+#    python2-dev
+
 
 # ensure, apache user can handle svn
 RUN if [ "$SVN_UID" != "100" ] ; then usermod -u $SVN_UID apache && groupmod -g $SVN_GID apache ; fi
@@ -33,6 +41,7 @@ RUN mkdir -p /run/apache2 && chown apache:apache /run/apache2
 VOLUME ["/var/www/"]
 VOLUME ["/etc/apache2/conf.d/"]
 VOLUME ["/svn"]
+VOLUME ["/trac"]
 
 EXPOSE 80
 
