@@ -17,6 +17,7 @@ services:
             - "./config.php:/var/www/websvn/include/config.php"
             - "./websvn.conf:/etc/apache2/conf.d/websvn.conf"
             - "./trac.conf:/etc/apache2/conf.d/trac.conf"
+            - "./svnmailer.conf:/etc/subversion/svnmailer.conf"
             - "./svn:/svn"
             - "./trac:/trac"
 
