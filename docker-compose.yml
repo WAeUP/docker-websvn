@@ -18,6 +18,8 @@ services:
             - "./websvn.conf:/etc/apache2/conf.d/websvn.conf"
             - "./trac.conf:/etc/apache2/conf.d/trac.conf"
             - "./svnmailer.conf:/etc/subversion/svnmailer.conf"
+            - "./htpasswd.php:/var/www/localhost/htdocs/index.php"
+            - "./htpasswd.conf:/etc/apache2/conf.d/htpasswd.conf"
             - "./svn:/svn"
             - "./trac:/trac"
 
